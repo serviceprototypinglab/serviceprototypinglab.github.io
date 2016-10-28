@@ -1,1 +1,33 @@
-Hello World
+Service Prototyping Lab - Labsite for random demonstrations
+
++----------------------------------------------------------------------------------------------------+
+|                                                                                         W          |
+|                                                                                    %%$%%%%WW%$     |
+|                                                                                W  $%%%%%%%%%%$     |
+|                                                                                M%%%%%%%%%%%@%%@%%W |
+|                                                                        W        %%%%@   W  W@%%%   |
+|                                                                    M^$ %%$ %^ ^%%%@%  $%%W  @@%%%%W|
+|                                                                    %%@%%%%%%% $$%%%%^W W   $%%%%W  |
+|                                                                  %%%%@@M ^%%%%%W@%%%%%%%$@%%@%%%W  |
+|                                                                 %%%%@W  M W@%%@ %M$%%@%%@%%%%$^%^W |
+|                                                                 $%%%%W W%  %@%%%   %@ %%%WW@%      |
+|                                                                 W@%%%%$ $W$%%%%   W W  M@  W W     |
+|                                                                  $%%%%%%%%%%%%%@@@%%%M             |
+|                                                                    W%%%@%^%%%% %^^^%%%%$           |
+|                                                                            M@%M M$$$$W@%%W         |
+|    WW W W      W                                WW          W              W$%$  ^%$$ %%           |
+|   W$MMMMWWW   W  WWWWWWW     $MWW             W%% %%W     W% @%%%%%%%MM   $$$%^W M $$%%%M          |
+| $W^WMWWW W W  WWW    WWMWWW  MW%%W           $@%%%%%M     W%%%%^%%^%%%@WW   W%$%%%%%%%%            |
+| M^^MW   W    W WW    WWW$M$  $WW%           W% %$%@%%W     @%%@W WW%%%%    W$$W$%$$WW              |
+| WMMMWWWWWW    WWWW   WWWWWW  W%%%W         W%%%% W%%%@     %%%%%%%%@%%$  WW$$W W                   |
+|  WWWWWWWWW W   WWW WWWWW$W   WW%%$         $%%%% WW%%%$   W%%%%%@@@%%%%WWW                         |
+| W     WWW  W W WWWWWWW W     M%%%$W       W%%%%%%@%%%%%W   %%%%%%%%%%%@$                           |
+|       W       WWWWW          WW%%WW W$MW  M%%%^$$M$%%%%WW W@%%%%$W%%%%%%                           |
+| WWWWWWW    W   WWMW          %W%@%%%%%%@WW%%%%W    W%%%%  $%%%%%@%@%%%%W                           |
+|  WWWW WW W    WWWW           WWM$$W%^$ W $$%%       $W %$  $%%%%%%$$WW                             |
+|                                                                                                    |
++----------------------------------------------------------------------------------------------------+
+
+** microservice composition tool **
+
+http://123.456.789.abc/...
