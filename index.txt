@@ -30,4 +30,4 @@ Service Prototyping Lab - Labsite for random demonstrations
 
 ** microservice composition tool **
 
-http://123.456.789.abc/...
+http://104.196.193.3/search/cloud-native
