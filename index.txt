@@ -31,3 +31,7 @@ Service Prototyping Lab - Labsite for random demonstrations
 ** microservice composition tool **
 
 http://104.196.193.3/search/cloud-native
+
+** whatcloud **
+
+https://whatcloudphp.mybluemix.net/
