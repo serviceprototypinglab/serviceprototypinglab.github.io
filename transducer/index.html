@@ -6,9 +6,10 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <title>Rapid Interface Fabric</title>
+    <title>Rapid Interface Transducer</title>
 <script>
 var host = "transducer.westeurope.cloudapp.azure.com";
+var proto = "https";
 
 var counter = 0;
 
@@ -50,7 +51,7 @@ function startraml()
 			}
 		}
 	};
-	xhttp.open("POST", "http://" + host + ":5000/scan", true);
+	xhttp.open("POST", proto + "://" + host + ":5000/scan", true);
 	xhttp.setRequestHeader("Content-type", "application/raml+yaml");
 	xhttp.send(document.getElementById("raml").value);
 }
@@ -76,7 +77,7 @@ function schema()
 					var linknode = document.createElement("a");
 					var linktext = document.createTextNode(link);
 					linknode.appendChild(linktext);
-					linknode.href = "http://" + host + ":" + response[1] + "/api";
+					linknode.href = proto + "://" + host + ":" + response[1] + "/api";
 					service.childNodes[1].appendChild(linknode);
 				}
 			} else {
@@ -84,14 +85,14 @@ function schema()
 			}
 		}
 	};
-	xhttp.open("POST", "http://" + host + ":5000/build", true);
+	xhttp.open("POST", proto + "://" + host + ":5000/build", true);
 	xhttp.setRequestHeader("Content-type", "application/raml+yaml");
 	xhttp.send(multipart);
 }
 </script>
   </head>
   <body>
-    <h1>Rapid Interface Fabric</h1>
+    <h1>Rapid Interface Transducer</h1>
 
 From idea to RAML to Docker to running service... Just post the RAML file.
 
