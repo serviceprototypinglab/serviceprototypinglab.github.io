@@ -39,3 +39,7 @@ https://whatcloudphp.mybluemix.net/
 ** ramlvalidator **
 
 https://ramlvalidator.mybluemix.net/
+
+** transducer [local] **
+
+http://serviceprototypinglab.github.io/transducer/

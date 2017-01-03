@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <title>Rapid Interface Fabric</title>
+<script>
+var host = "transducer.westeurope.cloudapp.azure.com";
+
+var counter = 0;
+
+function completeraml(schemafile)
+{
+	//alert("Schema: " + schemafile);
+	var schema = document.getElementById("schema");
+	var schemacopy = schema.cloneNode(true);
+	schemacopy.id = "schema" + counter;
+	schemacopy.style.visibility = "visible";
+	//schemacopy.childNodes.item("b").innerHTML = schemafile;
+	var txt = document.createTextNode(schemafile);
+	schemacopy.childNodes[1].appendChild(txt);
+	schemacopy.childNodes[3].childNodes[1].id = "schemaform" + counter;
+	counter++;
+
+	document.getElementById("schemacontainer").appendChild(schemacopy);
+	document.getElementById("ramlbutton").disabled = true;
+}
+
+function startraml()
+{
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+		if(this.readyState == 4) {
+			if(this.status == 200) {
+				//alert(this.responseText);
+				var lines = this.responseText.split("\n");
+				for(var i = 0; i < lines.length; i++) {
+					if(lines[i].indexOf(".raml") == -1 && lines[i] != "") {
+						completeraml(lines[i]);
+					}
+				}
+				if(lines.length == 2) {
+					schema();
+				}
+			} else {
+				alert("Error: Service unavailable or invalid RAML or other reason.");
+			}
+		}
+	};
+	xhttp.open("POST", "http://" + host + ":5000/scan", true);
+	xhttp.setRequestHeader("Content-type", "application/raml+yaml");
+	xhttp.send(document.getElementById("raml").value);
+}
+
+function schema()
+{
+	var multipart = document.getElementById("raml").value;
+	for(var i = 0; i < counter; i++) {
+		multipart += "\n&";
+		multipart += document.getElementById("schemaform" + i).value;
+	}
+
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+		if(this.readyState == 4) {
+			if(this.status == 200) {
+				//alert("Response:" + this.responseText);
+				var response = this.responseText.split(" ");
+				if(response[0] == "success") {
+					var service = document.getElementById("service");
+					service.style.visibility = "visible";
+					var link = host + ":" + response[1] + "/api";
+					var linknode = document.createElement("a");
+					var linktext = document.createTextNode(link);
+					linknode.appendChild(linktext);
+					linknode.href = "http://" + host + ":" + response[1] + "/api";
+					service.childNodes[1].appendChild(linknode);
+				}
+			} else {
+				alert("Error: Service unavailable or invalid RAML or other reason.");
+			}
+		}
+	};
+	xhttp.open("POST", "http://" + host + ":5000/build", true);
+	xhttp.setRequestHeader("Content-type", "application/raml+yaml");
+	xhttp.send(multipart);
+}
+</script>
+  </head>
+  <body>
+    <h1>Rapid Interface Fabric</h1>
+
+From idea to RAML to Docker to running service... Just post the RAML file.
+
+<form action="javascript:startraml()" method="post">
+<textarea name="raml" id="raml">
+</textarea>
+<input type="submit" value="Produce service" id="ramlbutton">
+</form>
+
+<div id="schemacontainer">
+<div style="visibility:hidden" id="schema">
+The RAML file references an external schema: <b></b>. Post it here.
+<form action="javascript:schema()" method="post">
+<textarea name="schema" id="schemaform">
+</textarea>
+<input type="submit" value="Produce service">
+</form>
+</div>
+</div>
+
+<div style="visibility:hidden" id="service">
+Your service runs here: <b></b>.
+</div>
+
+  </body>
+</html>
