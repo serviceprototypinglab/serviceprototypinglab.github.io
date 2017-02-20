@@ -40,6 +40,10 @@ https://whatcloudphp.mybluemix.net/
 
 https://ramlvalidator.mybluemix.net/
 
-** transducer [local] **
+** transducer [local frontend] **
 
 http://serviceprototypinglab.github.io/transducer/
+
+** ramlconverter [local frontend] **
+
+http://serviceprototypinglab.github.io/ramlconverter/
