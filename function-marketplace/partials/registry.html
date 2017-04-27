@@ -1,0 +1,35 @@
+<div class="row">
+    <div class="col-md-2"><h3 class="sens_dash">Top Picks</h3></div>
+    <form class="form-horizontal col-md-8" role="form">
+        <div class="form-group has-feedback">
+            <input type="text" class="form-control" ng-model="query">
+            <span class="glyphicon glyphicon-search form-control-feedback"></span>
+        </div>
+    </form>
+</div>
+<div masonry preserve-order id="sensor_list">
+    <div class="grid-sizer col-xs-6 col-sm-4 col-lg-3"></div>
+    <div class="masonry-brick sensor-wrapper col-xs-6 col-sm-4 col-lg-3" id="{{sensor.id}}"
+         ng-repeat="sensor in sensors | filter:{title: query}">
+        <div class="sensor" ng-controller="SensorModalCtrl">
+            <div class="icon" ng-click="open()">
+                <img width="40px" class="img-responsive pull-left sensor-icon" ng-src="{{sensor.icon}}">
+                <h4>{{sensor.title}}</h4>
+                <abbr title="High Secure"><span class="glyphicon glyphicon-lock"
+                                                ng-show="sensor.end_points.length > 1"></span></abbr>
+                <span class="label label-success" ng-show="user.check_subscribe(sensor.id)">Subscribed</span>
+                <abbr title="High Reliable"><span class="label label-info" ng-show="sensor.end_points.length > 2">Reliable</span></abbr>
+            </div>
+            <div ng-show="sensor.picture" ng-click="open()">
+                <img class="img-responsive sensor-picture" ng-src="{{sensor.picture}}">
+            </div>
+            <span class="description" ng-click="open()">{{sensor.description}}</span>
+            <div ng-controller="ShowMoreCtrl" ng-show="sensor.comments">
+                <a href ng-click="toggleCollapse()"><strong>More...</strong></a>
+                    <span ng-hide="isCollapsed">You can rate and discuss your experience by using following link
+                    <a href ng-href="{{sensor.comments}}">{{sensor.comments}}</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

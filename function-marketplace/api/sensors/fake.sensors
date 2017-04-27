@@ -1,0 +1,252 @@
+[
+    {
+        "id": "2",
+        "title": "Temperature in Student Lab",
+        "availability": true,
+        "last_update": "2013-08-07T11:14:34.000+02:00",
+        "description": "This sensor monitors and ensures perfect working conditions for students: 24-26 Celcius Degree. Whatever the weather is outside, student lab is always nice an cozy.",
+        "sla": "Chinese sensors 'TMPR-42' guarantee measurement accuracy up to 0.1 Celicus Degree. Sensor proxy works with 99% uptime.",
+        "sla_last_update": "1395005996",
+        "icon": "img/icon/server_rack.jpg",
+        "picture": "img/sensor_images/datacenterTemper.jpg",
+        "access": "private",
+        "provider_name": "Provider TU Dresden",
+        "location": "Dresden",
+        "provider_www": "http://www.inf.tu-dresden.de/",
+        "preview": "",
+        "type": "chart",
+        "dev_details": "true",
+        "responsible_team": "DSE",
+        "administrator": "Max Mustermann",
+        "EPConfig": "docs/api1.pdf",
+        "SDK": "docs/downloads/SensDash_source.zip",
+        "comments":"",
+        "end_points": [
+            {
+                "type": "muc",
+                "priority": "main",
+                "name": "xmpp://chat11@conference.likepro.co",
+                "pwd": null
+            },
+            {
+                "type": "muc",
+                "priority": "alternative",
+                "name": "xmpp://chat12@conference.likepro.co",
+                "pwd": null
+            },
+                         {
+                             "type": "muc",
+                             "priority": "optional",
+                             "name": "xmpp://chat13@conference.likepro.co",
+                             "pwd": null
+                         }
+
+        ],
+        "template": {
+            "subtitle": {
+                "text": "Real-timeupdated"
+            },
+            "yAxis": {
+                "title": {
+                    "text": "Temperature, C"
+                }
+            },
+            "series": [
+                {
+                    "data": [],
+                    "name": "Temperature in Student La"
+                }
+            ],
+            "title": {
+                "text": "Temperature in Student La"
+            },
+            "chart": {
+                "type": "spline"
+            },
+            "xAxis": {
+                "labels": {
+                    "rotation": -45
+                },
+                "type": "datetime"
+            },
+            "credits": {
+                "enabled": false
+            }
+        }
+    },
+    {
+        "id": "5",
+        "title": "Bitcoin price monitor",
+        "availability": true,
+        "last_update": "2013-08-07T11:14:34.000+02:00",
+        "description": "Unser Bitcoin Chart zeigt Ihnen den aktuellen Bitcoin Kurs sowie die Bitcoin Kursentwicklung. Der Bitcoin Preis wird Ihnen wahlweise in Bitcoin Kurs Euro angezeigt. Der Wert des Bitcoins wird aus den aktuellen Handelspreisen und Bitcoin Charts verschiedener Marktplätze und Börsen ermittelt.",
+        "sla": "",
+        "sla_last_update":"",
+        "icon": "img/icon/bitcoin_icon.jpg",
+        "preview": [
+            "img/sensor_images/bitcoin/bitcoinKaufen.png",
+            "img/sensor_images/bitcoin/bitcoinPreview.png",
+            "img/sensor_images/bitcoin/bitcoinVerkaufen.png"
+        ],
+        "picture": "img/sensor_images/bitcoinPreview.jpg",
+        "access": "private",
+        "provider_name": "bitcoin Deutschland",
+        "provider_www": "https://www.bitcoin.de/de",
+        "dev_details": "false",
+        "location": "Frankfurt",
+        "administrator": "Max Mustermann",
+        "EPConfig": "docs/api1.pdf",
+        "SDK": "docs/downloads/SensDash_source.zip",
+        "comments":"",
+        "end_points": [
+            {
+                "type": "muc",
+                "priority": "main",
+                "name": "xmpp://chat4@conference.likepro.co",
+                "pwd": null
+            },
+            {
+                            "type": "muc",
+                            "priority": "optional",
+                            "name": "xmpp://chat5@conference.likepro.co",
+                            "pwd": null
+                        }
+        ],
+        "type": "text",
+        "template": ""
+    },
+    {
+        "id": "6",
+        "title": "Light sensor TU-Dresden campus",
+        "availability": true,
+        "last_update": "2013-08-07T11:14:34.000+02:00",
+        "description": "Light intensity outside, updated every minute",
+        "sla": "Sensor resolution is 5 Lumen, calculated on 30-seconds average. 99% uptime.",
+        "sla_last_update":"1395005996",
+        "icon": "img/icon/light_icon.png",
+        "preview": "",
+        "picture": "img/sensor_images/brightness.jpg",
+        "access": "private",
+        "provider_name": "Provider TU Dresden",
+        "provider_www": "http://www.inf.tu-dresden.de/",
+        "location": "Dresden",
+        "administrator": "Max Mustermann",
+        "EPConfig": "docs/api1.pdf",
+        "SDK": "docs/downloads/SensDash_source.zip",
+        "comments":"",
+        "end_points": [
+            {
+                "type": "muc",
+                "priority": "main",
+                "name": "xmpp://chat6@conference.likepro.co",
+                "pwd": null
+            }
+        ],
+        "dev_details": "true"
+    },
+    {
+        "id": "7",
+        "title": "RN Robot charge level",
+        "availability": true,
+        "last_update": "2013-08-07T11:14:34.000+02:00",
+        "description": "Robot reports battery charge level changes in realtime",
+        "sla": "Battery charge level is measured with up to 80% accuracy; can degrade over a time.",
+        "sla_last_update":"1395005996",
+        "icon": "img/icon/Battery-Icon.png",
+        "picture": "img/sensor_images/robotBattery4.jpg",
+        "preview": "",
+        "access": "private",
+        "provider_name": "Provider TU Dresden",
+        "provider_www": "http://www.inf.tu-dresden.de/",
+        "location": "Dresden",
+        "administrator": "Max Mustermann",
+        "EPConfig": "docs/api1.pdf",
+        "SDK": "docs/downloads/SensDash_source.zip",
+        "comments": "http://test.de",
+        "end_points": [
+            {
+                "type": "muc",
+                "priority": "main",
+                "name": "xmpp://chat7@conference.likepro.co",
+                "pwd": null
+            },
+            {
+                "type": "muc",
+                "priority": "alternative",
+                "name": "xmpp://chat8@conference.likepro.co",
+                "pwd": null
+            },
+            {
+                "type": "muc",
+                "priority": "optional",
+                "name": "xmpp://chat3@conference.likepro.co",
+                "pwd": null
+            }
+        ],
+        "dev_details": "true"
+    },
+    {
+        "id": "8",
+        "title": "Weather in Dresden",
+        "availability": true,
+        "last_update": "2013-08-07T11:14:34.000+02:00",
+        "description": "Gives a detailed overview of weather forecast for current day and next few days inclusive: temperature, humidity, wind etc. ",
+        "sla": "",
+        "sla_last_update":"",
+        "icon": "img/icon/TemperatureOutside.jpg",
+        "picture": "img/sensor_images/weather.jpg",
+        "preview": "",
+        "access": "public",
+        "provider_name": "Google",
+        "provider_www": "www.google.com",
+        "location": "Dresden",
+        "administrator": "Max Mustermann",
+        "EPConfig": "docs/api1.pdf",
+        "SDK": "docs/downloads/SensDash_source.zip",
+        "comments": "",
+        "end_points": [
+            {
+                "type": "muc",
+                "priority": "main",
+                "name": "xmpp://chat9@conference.likepro.co",
+                "pwd": null
+            },
+            {
+                "type": "muc",
+                "priority": "optional",
+                "name": "xmpp://chat10@conference.likepro.co",
+                "pwd": null
+            }
+        ],
+        "dev_details": "false"
+    },
+    {
+        "id": "10",
+        "title": "Rain sensor TU Dresden campus",
+        "availability": false,
+        "last_update": "2013-08-07T11:14:34.000+02:00",
+        "description": "Don't leave your bike in heavy rain, subscribe to instant updates of TU-Dresden rain sensors and react fast!",
+        "sla": "Sensor runs in a loop, pushing updates whenever rain state changes. Possible states are: no rain, light rain, medium rain, heavy rain.",
+        "sla_last_update":"1395005996",
+        "icon": "img/icon/humidity_icon.png",
+        "picture": "img/sensor_images/rain.jpg",
+        "preview": "img/graph.png",
+        "access": "private",
+        "provider_name": "Provider TU Dresden",
+        "provider_www": "http://www.inf.tu-dresden.de/",
+        "location": "Dresden",
+        "administrator": "Max Mustermann",
+        "EPConfig": "docs/api1.pdf",
+        "SDK": "docs/downloads/SensDash_source.zip",
+        "comments":"",
+        "end_points": [
+            {
+                "type": "muc",
+                "priority": "main",
+                "name": "xmpp://chat11@conference.likepro.co",
+                "pwd": null
+            }
+        ],
+        "dev_details": "true"
+    }
+]

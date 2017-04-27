@@ -1,0 +1,153 @@
+body {
+    padding-bottom: 20px;
+    background-color: #EEEEEE;
+}
+.title {
+    color: #3276b1;
+}
+hr {
+    color: black;
+    height: 2px;
+}
+div.graph {
+    display: none;
+}
+#graphs {
+    padding: 70px 20px;
+}
+.btn-lg {
+    font-size: 14px;
+}
+.content {
+    padding-top: 70px;
+}
+
+.sensor {
+    background-color: white;
+    padding: 10px;
+    margin-bottom: 30px;
+    box-shadow: 0 8px 6px -6px gray;
+}
+
+.icon {
+    padding-bottom: 5px;
+}
+.icon > .sensor-icon {
+    padding: 2px 8px 4px 0;
+}
+
+.icon > h4 {
+    display: inline;
+}
+
+.sensor-picture {
+    padding: 5px 0 10px 0;
+}
+
+#sensor_list .sensor {
+    cursor: pointer;
+}
+
+.subscribed_sensor {
+    background-color: white;
+
+}
+
+.navigation {
+    background: #ddd;
+    width: 100%;
+    top: 0;
+    position: fixed;
+}
+
+.box-style {
+    box-shadow: 0 8px 6px -6px gray;
+}
+
+.nav {
+    padding: 0 15px;
+    font-size: 1.25em;
+}
+
+.navbar-right button {
+    margin: 0;
+}
+
+.status {
+    padding-top: 5px;
+}
+
+.preview_content {
+    display: none;
+}
+
+div.sla {
+    display: none;
+}
+
+.favorites {
+    padding: 0px 10px 10px 0px;
+}
+
+#favorites_tab, #settings, #dev_ref {
+    background-color: white;
+    -webkit-box-shadow: 0 8px 6px -6px gray;
+    -moz-box-shadow: 0 8px 6px -6px gray;
+    box-shadow: 0 8px 6px -6px gray;
+    padding-top: 70px;
+}
+#dev_ref{
+    padding-bottom: 30px;
+}
+.btn-settings {
+    float: right;
+    padding-right: 40px;
+}
+
+button.preview {
+    margin-top: 10px;
+}
+
+.star {
+    width: 30px;
+}
+.sensor-data {
+    height: 250px;
+}
+
+.status>span {
+    font-size: 1.1em;
+    padding-right: 5px;
+}
+div.registry_edit{
+    background-color: whitesmoke;
+}
+#addedRegistry{
+    margin: 0 5px 5px 5px;
+}
+div.dev_description pre{
+    height: 350px;
+}
+.carousel-inner{
+    max-height: 320px;
+}
+.glyphicon{
+    color: mediumseagreen;
+}
+h3.sens_dash{
+    margin-top: 0;
+    margin-left: 20px;
+    color: steelblue;
+}
+
+table.table.registry-list>tbody>tr>td {
+    vertical-align: middle;
+}
+
+.table.registry-list .btn {
+    margin: 0 5px;
+    float: left;
+}
+a.manageAccount{
+    float: right;
+}

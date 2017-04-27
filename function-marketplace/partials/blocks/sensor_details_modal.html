@@ -1,0 +1,36 @@
+<div class="modal-header">
+    <h3>{{sensor.title}}
+    <abbr title="High Secure"><span class="glyphicon glyphicon-lock" ng-show="sensor.end_points.length > 1"></span></abbr>
+    </h3>
+</div>
+<div class="modal-body">
+    <p><strong>Description: </strong>{{sensor.description}}</p>
+    <p><strong>Access: </strong>{{sensor.access}}</p>
+    <p><strong>Provider: </strong><a href="{{sensor.provider_www}}">{{sensor.provider_name}}</a></p>
+    <div class="dev_description" ng-show="sensor.dev_details">
+        <p><strong>Location: </strong>{{sensor.location}}</p>
+        <p ng-show="sensor.responsible_team"><strong>Responsible Team: </strong>{{sensor.responsible_team}}</p>
+        <p ng-show="sensor.administrator"><strong>Administrator: </strong>{{sensor.administrator}}</p>
+        <p><strong>Reliability: </strong>Has {{sensor.end_points.length}} end-point(s)</p>
+        <p ng-show="sensor.EPConfig"><strong>End-point configuration: </strong>
+        <a href="{{sensor.EPConfig}}" >Download</a>
+    </div>
+    <div class="div_sla" ng-show="sensor.sla">
+        <p ng-hide="user.check_subscribe(sensor.id)">Please read and accept the SLA to subscribe</p>
+        <strong>SLA: </strong><textarea class="form-control" disabled>{{sensor.sla}}</textarea>
+        <label for="accept_sla" ng-hide="user.check_subscribe(sensor.id)">I hereby accept the SLA as stated above</label>
+        <input type="checkbox" ng-model="accept_sla" id="accept_sla" ng-hide="user.check_subscribe(sensor.id)">
+    </div>
+</div>
+<div ng-show="sensor.preview" style="height: 305px">
+    <carousel interval="5000">
+        <slide ng-repeat="img in sensor.preview">
+            <img ng-src="{{img}}" style="margin:auto;">
+        </slide>
+    </carousel>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="subscribe()" ng-disabled="!accept_sla && sensor.sla" ng-hide="user.check_subscribe(sensor.id)">Subscribe</button>
+    <button class="btn btn-info" ng-click="unsubscribe()" ng-hide="!user.check_subscribe(sensor.id)">Unsubscribe</button>
+    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+</div>

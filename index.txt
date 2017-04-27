@@ -47,3 +47,7 @@ http://serviceprototypinglab.github.io/transducer/
 ** ramlconverter [local frontend] **
 
 http://serviceprototypinglab.github.io/ramlconverter/
+
+** function marketplace [local frontend] **
+
+http://serviceprototypinglab.github.io/function-marketplace/

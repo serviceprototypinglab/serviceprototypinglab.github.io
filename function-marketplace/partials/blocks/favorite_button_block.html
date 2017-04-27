@@ -1,0 +1,6 @@
+<button type="button" ng-click="add_to_favorite(sensor)" ng-show="!check_favorite(sensor.id)" class="btn btn-default favorit_star">
+    <img class="star img-responsive" ng-src="img/star.png">
+</button>
+<button type="button" ng-show="check_favorite(sensor.id)" ng-click="delete_from_favorite(sensor)" class="btn btn-default favorit_star">
+    <img class="star img-responsive" ng-src="img/star_yellow.png">
+</button>

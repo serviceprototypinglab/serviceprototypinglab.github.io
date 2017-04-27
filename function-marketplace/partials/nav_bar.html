@@ -1,0 +1,40 @@
+<div class="container">
+    <ul class="nav nav-pills navbar-left">
+        <li ng-class="{active: isActive('/registry')}" ><a href="#/registry" id="sensor_list_link">Functions</a></li>
+        <li ng-show="xmpp.connection.connected" ng-class="{active: isActive('/subscriptions')}"><a
+                href="#/subscriptions">Subscriptions</a></li>
+        <li ng-show="xmpp.connection.connected" ng-class="{active: isActive('/favorites')}"><a
+                href="#/favorites">Favorites</a></li>
+        <li ng-show="xmpp.connection.connected" ng-class="{active: isActive('/settings')}"><a
+                href="#/settings">Settings</a></li>
+        <li ng-class="{active: isActive('/reference')}"><a
+                href="#/reference">Reference</a></li>
+    </ul>
+
+    <form ng-submit="login()" class="navbar-form navbar-right form-signin" role="login"
+          ng-hide="xmpp.connection.connected">
+        <div class="form-group">
+            <input ng-model="user.jid" type="email" id="jid" class="form-control" placeholder="JID" ng-disabled="in_progress">
+        </div>
+        <div class="form-group">
+            <input ng-model="user.pass" type="password" id="pass" class="form-control" placeholder="Password"
+                   required="" ng-disabled="in_progress">
+        </div>
+        <div class="form-group">
+            <input ng-model="user.bosh_server" type="text" id="bosh_server" class="form-control" placeholder="BOSH Server"
+                   required="" ng-disabled="in_progress">
+        </div>
+        <button type="submit" class="btn btn-default" ng-disabled="in_progress">Sign in
+        </button>
+    </form>
+    <div class="navbar-right status" ng-show="process">
+        <span>{{process}}</span>
+    </div>
+    <div class="navbar-right status" ng-show="xmpp.connection.connected">
+        <span>{{user.jid}}</span>
+        <button class="btn btn-default" ng-click="disconnect()">Sign out
+        </button>
+    </div>
+
+</div>
+
