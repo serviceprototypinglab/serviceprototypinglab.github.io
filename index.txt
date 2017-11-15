@@ -51,3 +51,8 @@ http://serviceprototypinglab.github.io/ramlconverter/
 ** function marketplace [local frontend] **
 
 http://serviceprototypinglab.github.io/function-marketplace/
++ http://functionhub-zhaw-test1.appuioapp.ch/
+
+** titanic data prediction quality check **
+
+https://openwhisk.ng.bluemix.net/api/v1/web/ZHAW%20ISPROT_ISPROT17/default/titanic.html
