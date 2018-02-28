@@ -15,6 +15,7 @@ angular.module('sensdash', [
         $routeProvider.when('/subscriptions', {templateUrl: 'partials/subscriptions.html', controller: 'StreamCtrl'});
         $routeProvider.when('/favorites', {templateUrl: 'partials/favorites.html', controller: 'FavoritesCtrl'});
         $routeProvider.when('/settings', {templateUrl: 'partials/settings.html', controller: 'SettingsCtrl'});
-        $routeProvider.when('/reference', {templateUrl: 'partials/references.html'});
+        //$routeProvider.when('/reference', {templateUrl: 'partials/references.html'});
+        $routeProvider.when('/about', {templateUrl: 'partials/about.html'});
         $routeProvider.otherwise({redirectTo: '/registry'});
     }]);

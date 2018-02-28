@@ -1,9 +1,9 @@
 var Config = {
-    BOSH_SERVICE: 'http://likepro.co/http-bind/',
-    XMPP_SERVER:  'likepro.co',
+    BOSH_SERVICE: 'http://jabb.im/http-bind/',
+    XMPP_SERVER:  'jabb.im',
     PUBSUB_NODE:  'pubsub.sensors',
-    ADMIN_JID: 'testman@likepro.co',
-    ADMIN_PASS: 'testpass'
+    ADMIN_JID:    'adminuser@YOURXMPPSERVER',
+    ADMIN_PASS:   'adminpass'
 }
 
 var Control = {
