@@ -56,3 +56,7 @@ http://serviceprototypinglab.github.io/function-marketplace/
 ** titanic data prediction quality check **
 
 https://openwhisk.ng.bluemix.net/api/v1/web/ZHAW%20ISPROT_ISPROT17/default/titanic.html
+
+** HelmQA community website [local] **
+
+http://serviceprototypinglab.github.io/helmqa/
