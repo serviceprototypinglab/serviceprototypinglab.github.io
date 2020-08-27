@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="dpgaas.css">
+<title>DPGaaS - Deployment Plan Generator as a Service</title>
+</head>
+<body>
+
+<script type="text/javascript" src="dpgaas.js"></script>
+
+<div><img src="dpgaas.png"></img></div><br/>
+
+DPGaaS examines your composite application or workflow and tells you what the best
+deployment layout is for each individual component/microservice/function/...
+
+<h3>Your application</h3>
+
+Choose between composition and workflow.
+
+<div class="tab">
+  <button class="tablinks" onclick="openModel(event, 'Composition')">Composition</button>
+  <button class="tablinks" onclick="openModel(event, 'Workflow')">Workflow</button>
+</div>
+
+<div id="Composition" class="tabcontent">
+  <h3>Composition</h3>
+  <p>A static composition of application parts, without consideration of data flows. All parts are deployed and are either running at the same time (containers) or at undefined times (functions). This corresponds to e.g. AWS SAM, Docker Compose or Kubernetes applications.</p>
+  <p class="syntax">Syntax: DPG 'nodes' (composition) block; AWS SAM and Docker Compose with memory annotations</p>
+  <p><textarea name="composition" cols=80 rows=10>
+{
+    "func A": {"mem": 200, "runtime": "java", "timeout": 600},
+    "func B": {"mem": 90, "runtime": "go", "timeout": 200},
+    "func C": {"mem": 191, "runtime": "nodejs:10", "timeout": 300}
+}
+  </textarea></p>
+</div>
+
+<div id="Workflow" class="tabcontent">
+  <h3>Workflow</h3>
+  <p>A dynamic composition of application parts, triggered by events. All parts are deployed, but are only running at specific times whose causal order can be used to make deployments more flexible. This corresponds to e.g. AWS Step Functions, IBM Composer, Fission Workflows. Syntactically, a workflow wraps the same structure as a composition but adds transitions.</p>
+  <p class="syntax">Syntax: DPG 'workflow' block consisting of 'nodes' (composition) and 'transitions'; AWS Step Functions and Fission Workflows with memory annotations</p>
+  <p><textarea name="workflow" cols=80 rows=10>
+{
+    "nodes": {
+        "func A": {"mem": 200, "runtime": "java", "timeout": 600},
+        "func B": {"mem": 90, "runtime": "go", "timeout": 200},
+        "func C": {"mem": 191, "runtime": "nodejs:10", "timeout": 300}
+    },
+    "transitions": {
+    	"func A": "func B",
+	"func B": "func C"
+    }
+}
+  </textarea></p>
+</div>
+
+<h3>Your resources</h3>
+
+Choose among the predefined resources. You can also add custom resources.
+
+<div>
+  <p><input type="checkbox" name="resource_gcf">Google Cloud Functions</input></p>
+  <p><input type="checkbox" name="resource_gcr">Google Cloud Run</input></p>
+  <p><input type="checkbox" name="resource_lambda">AWS Lambda</input></p>
+  <p><input type="checkbox" id="customcheck" onclick="addCustom()">Custom...</input></p>
+<div>
+
+<div id="Custom" class="tabcontentcustom">
+  <h3>Custom resource</h3>
+  <p>Describe your resource...</p>
+  <p class="syntax">Syntax: DPG 'resource' block</p>
+  <p><textarea name="custom" cols=80 rows=10>
+{
+    "raspberry": {
+        "mem": [32],
+        "runtimes": "python:3",
+        "timeout": None
+    }
+}
+  </textarea></p>
+</div>
+
+<h3>Your goals</h3>
+
+Choose which characteristics the deployment plan should have. In case of conflicting goals, multiple deployment plans will be returned.
+
+<div>
+  <p><input type="checkbox" name="goal_lat">Low latency, low traffic: Centralise deployment on as few resources as possible</input></p>
+  <p><input type="checkbox" name="goal_mem">High memory utilisation: Favour resources with allocations closely matching requirements</input></p>
+  <p><input type="checkbox" name="goal_dur">Low duration: Parallelise as much as possible to reduce makespan</input></p>
+<div>
+
+<div>
+<input type="submit" value="Generate deployment plan(s)" onclick="generatePlan()">
+</div>
+
+<div id="Response" class="tabcontentcustom">
+  <h3>Deployment plan</h3>
+  <p>Your deployment plan has either been generated or it was found that no deployment is possible.</p>
+  <p><textarea name="deploymentplan" id="deploymentplan" cols=80 rows=20 readonly="true"></textarea></p>
+</div>
+   
+</body>
+</html> 

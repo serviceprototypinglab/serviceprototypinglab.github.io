@@ -60,3 +60,7 @@ https://openwhisk.ng.bluemix.net/api/v1/web/ZHAW%20ISPROT_ISPROT17/default/titan
 ** HelmQA community website [local] **
 
 http://serviceprototypinglab.github.io/helmqa/
+
+** DPGaaS **
+
+http://serviceprototypinglab.github.io/dpgaas/
