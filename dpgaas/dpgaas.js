@@ -112,7 +112,8 @@ async function generatePlan() {
   //};
   var req = msg;
   //xhr.open('POST', 'http://localhost:8080/');
-  xhr.open('POST', 'http://160.85.252.148:10080/');
+  //xhr.open('POST', 'http://160.85.252.148:10080/');
+  xhr.open('POST', 'https://160.85.252.148:10080/');
   xhr.setRequestHeader('Content-Type', 'application/json');
   xhr.send(JSON.stringify(req));
 }
