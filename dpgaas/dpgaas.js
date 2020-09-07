@@ -111,7 +111,8 @@ async function generatePlan() {
   //  "application": {"func A": {"mem": 200, "runtime": "java", "timeout": 600}, "func B": {"mem": 90, "runtime": "go", "timeout": 200}}
   //};
   var req = msg;
-  xhr.open('POST', 'http://localhost:8080/');
+  //xhr.open('POST', 'http://localhost:8080/');
+  xhr.open('POST', 'http://160.85.252.148:10080/');
   xhr.setRequestHeader('Content-Type', 'application/json');
   xhr.send(JSON.stringify(req));
 }
