@@ -1,0 +1,108 @@
+<html>
+<head>
+<title>CH Engage! (semi-serious prototype)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script type="text/javascript">
+function getLocation() {
+  if (navigator.geolocation) {
+    var options = {
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 0
+    };
+    navigator.geolocation.getCurrentPosition(success, error, options);
+  } else {
+    console.log('Geolocation is not supported');
+  }
+}
+
+function error(err) {
+  console.warn(`ERROR(${err.code}): ${err.message}`);
+}
+
+function success(pos) {
+  //var lat = pos.coords.latitude;
+  //var lon = pos.coords.longitude;
+  // FIXME hardcoded St. Gallen for demo
+  var lat = 47.4227;
+  var lon = 9.3674;
+
+  console.log('coordinates: ' + lat + ',' + lon);
+  console.log('accuracy: ' + pos.coords.accuracy + ' meters.');
+  document.getElementById("geo").value = lat + ', ' + lon;
+
+  y1 = lat - 0.05;
+  y2 = lat + 0.05;
+  x1 = lon - 0.05;
+  x2 = lon + 0.05;
+
+  src = "https://www.openstreetmap.org/export/embed.html?bbox=" + x1 + "%2C" + y1 + "%2C" + x2 + "%2C" + y2 + "&amp;layer=mapnik";
+  document.getElementById("osm").src = src;
+
+  let xhr = new XMLHttpRequest();
+  xhr.open("GET", "http://localhost:8080/geo2chmuni/" + lat + "/" + lon);
+  xhr.send();
+
+  xhr.onload = function() {
+    //alert(`Loaded: ${xhr.status} ${xhr.response}`);
+    if(xhr.status == 200){
+      document.getElementById("muni").value = xhr.response;
+
+      // https://www.openstreetmap.org/relation/1683099 → Sachseln OW
+      // https://www.openstreetmap.org/relation/1683941 → St. Gallen
+    }else{
+      alert(`Content Error`);
+    }
+  };
+
+  xhr.onerror = function() { // only triggers if the request couldn't be made at all
+    alert(`Network Error`);
+  };
+}
+</script>
+<style type="text/css">
+body {font-family: sans-serif;}
+a {color: #000000; text-decoration: none;}
+a:hover {background-color: #A1A4A7;}
+</style>
+</head>
+<body>
+
+<div>
+<span style="display: inline-block">
+
+<div style="font-size: 24pt; font-style: italic; color: #909090;">CH Engage</div><br/>
+
+<form action="javascript:getLocation()">
+<input type="submit" value="Engage! (determine location)">
+</form>
+
+<!-- <form action=""> -->
+Geolocation:<br/>
+<input type="text" name="geolocation" id="geo">
+<br/><br/>
+Municipality or Authority:<br/>
+<input type="text" name="municipality" id="muni">
+<br/><br/>
+
+</span>
+<span style="display: inline-block">
+<div style="background: #D8D8D8; width: 250px; height: 250px">
+<iframe id="osm" width="250" height="250" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="" style="border: 1px solid black">
+<!-- https://www.openstreetmap.org/relation/1683099 -->
+</iframe>
+</div>
+</span>
+</div>
+
+Civic Services:<br/>
+<div style="background: #D1D4D7; width: 470px;">
+֍ <a href="...TBD">Damage reports: City of St. Gallen Stadtmelder</a><br>
+֍ <a href="...TBD">Forest damage: Citizen's Community</a><br>
+֍ <a href="...TBD">Hiking signalisation: Swiss Hiking Paths</a><br>
+֍ <a href="...TBD">Biking: Bikeable Spots</a><br>
+֍ <a href="...TBD">Theft/violation: Suisse ePolice</a>
+</div>
+
+</body>
+</html>

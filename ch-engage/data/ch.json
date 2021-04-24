@@ -1,0 +1,18 @@
+{
+ "SG::St. Gallen": {
+  "web": "https://m.stadt.sg.ch/index.php?apid=4507051",
+  "misc": "https://www.stadt.sg.ch/home/verwaltung-politik/demokratie-politik/partizipation/stadtmelder.html"
+ },
+ "SH::Schaffhausen": {
+  "web": "https://m.stadt-schaffhausen.ch/index.php?apid=11652884"
+ },
+ "ZH::Dietikon": {
+  "web": "https://dietikon.citymobile.ch/index.php?apid=631378530&jsr=1"
+ },
+ "ZH::Schlieren": {
+  "web": "https://m.schlieren.ch/index.php?apid=1837234"
+ },
+ "ZH::Winterthur": {
+  "web": "https://m.winterthur.ch/index.php?apid=1643504707"
+ }
+}
