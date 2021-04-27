@@ -21,11 +21,14 @@ function error(err) {
 }
 
 function success(pos) {
-  //var lat = pos.coords.latitude;
-  //var lon = pos.coords.longitude;
-  // FIXME hardcoded St. Gallen for demo
-  var lat = 47.4227;
-  var lon = 9.3674;
+  var lat = pos.coords.latitude;
+  var lon = pos.coords.longitude;
+  nogps = document.getElementById("nogps").checked;
+  if(nogps) {
+    // FIXME hardcoded St. Gallen for demo
+    lat = 47.4227;
+    lon = 9.3674;
+  }
 
   console.log('coordinates: ' + lat + ',' + lon);
   console.log('accuracy: ' + pos.coords.accuracy + ' meters.');
@@ -39,14 +42,23 @@ function success(pos) {
   src = "https://www.openstreetmap.org/export/embed.html?bbox=" + x1 + "%2C" + y1 + "%2C" + x2 + "%2C" + y2 + "&amp;layer=mapnik";
   document.getElementById("osm").src = src;
 
+  ep = document.getElementById("ep").value;
+
+  url = "http://" + ep + "/geo2chmuni/" + lat + "/" + lon;
+  load(url);
+}
+
+function load(url) {
   let xhr = new XMLHttpRequest();
-  xhr.open("GET", "http://localhost:8080/geo2chmuni/" + lat + "/" + lon);
+  xhr.open("GET", url);
   xhr.send();
 
   xhr.onload = function() {
     //alert(`Loaded: ${xhr.status} ${xhr.response}`);
     if(xhr.status == 200){
       document.getElementById("muni").value = xhr.response;
+
+      civicservice(xhr.response);
 
       // https://www.openstreetmap.org/relation/1683099 → Sachseln OW
       // https://www.openstreetmap.org/relation/1683941 → St. Gallen
@@ -58,6 +70,16 @@ function success(pos) {
   xhr.onerror = function() { // only triggers if the request couldn't be made at all
     alert(`Network Error`);
   };
+}
+
+function combo() {
+  s = document.getElementById("muni").value;
+  civicservice(s);
+}
+
+function civicservice(muni) {
+  document.getElementById("muniname").textContent = muni;
+  document.getElementById("civicservice").style.display = "block";
 }
 </script>
 <style type="text/css">
@@ -82,7 +104,15 @@ Geolocation:<br/>
 <input type="text" name="geolocation" id="geo">
 <br/><br/>
 Municipality or Authority:<br/>
-<input type="text" name="municipality" id="muni">
+<input type="text" name="municipality" id="muni" list="munis" onChange="javascript:combo()">
+<datalist id="munis">
+ <option>St. Gallen
+ <option>Winterthur
+ <option>Zurich
+ <option>Buchs LU
+ <option>Buchs SG
+ <option>Buchs ZH
+</datalist>
 <br/><br/>
 
 </span>
@@ -95,7 +125,8 @@ Municipality or Authority:<br/>
 </span>
 </div>
 
-Civic Services:<br/>
+<div id="civicservice" style="display: none">
+Civic Services for <span id="muniname"></span>:<br/>
 <div style="background: #D1D4D7; width: 470px;">
 ֍ <a href="...TBD">Damage reports: City of St. Gallen Stadtmelder</a><br>
 ֍ <a href="...TBD">Forest damage: Citizen's Community</a><br>
@@ -103,10 +134,22 @@ Civic Services:<br/>
 ֍ <a href="...TBD">Biking: Bikeable Spots</a><br>
 ֍ <a href="...TBD">Theft/violation: Suisse ePolice</a>
 </div>
+</div>
 
 <div style="height:100px;"></div>
+<div style="font-size: 10pt">
 
 <a href="data/ch.json">Data curation</a>
+<br/>
+Backend:
+<select id="ep">
+<option value="160.85.252.116:10080">cloudlab</option>
+<option value="localhost:8080">local</option>
+</select>
+<br/>
+Options: <input type="checkbox" id="nogps"> nogps
+
+</div>
 
 </body>
 </html>
