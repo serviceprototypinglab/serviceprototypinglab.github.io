@@ -44,7 +44,7 @@ function success(pos) {
 
   ep = document.getElementById("ep").value;
 
-  url = "http://" + ep + "/geo2chmuni/" + lat + "/" + lon;
+  url = ep + "/geo2chmuni/" + lat + "/" + lon;
   load(url);
 }
 
@@ -143,8 +143,8 @@ Civic Services for <span id="muniname"></span>:<br/>
 <br/>
 Backend:
 <select id="ep">
-<option value="160.85.252.116:10080">cloudlab</option>
-<option value="localhost:8080">local</option>
+<option value="https://160.85.252.116:10080">cloudlab</option>
+<option value="http://localhost:8080">local</option>
 </select>
 <br/>
 Options: <input type="checkbox" id="nogps"> nogps
