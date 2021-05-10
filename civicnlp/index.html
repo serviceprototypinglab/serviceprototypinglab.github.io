@@ -1,0 +1,51 @@
+<html>
+	<head>
+		<title>Züri wie neu - Auto NLP demo</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<script type="text/javascript">
+function detect(){
+	text = document.getElementById("input").value;
+	//remotedetect(text, "http://localhost:10080/detect/" + text);
+	remotedetect(text, "https://160.85.252.116/detect/" + text);
+}
+
+function remotedetect(text, url){
+  let xhr = new XMLHttpRequest();
+  xhr.open("GET", url);
+  xhr.send();
+  //document.getElementById("autocat").textContent = "";
+
+  xhr.onload = function(){
+    if(xhr.status == 200){
+      s = "";
+      obj = JSON.parse(xhr.response);
+      Object.entries(obj).forEach(e => {
+          const [k, v] = e;
+          c = "#b0b0b0";
+          if(v >= 0.5){
+              c = "#00b000";
+          }else if(v >= 0.25){
+              c = "#b0b000";
+          }
+          s += "<span style='background-color:" + c + "'>" + k + "</span>&nbsp;"
+      });
+      document.getElementById("autocat").innerHTML = s;
+    }else{
+      //alert(`Content Error`);
+    }
+  };
+
+  xhr.onerror = function(){
+    //alert(`Network Error`);
+  };
+}
+		</script>
+	</head>
+	<body>
+		Report damage:<br>
+		(Auto-categorisation: <span style="background:#c0c0c0" id="autocat">???</span>)<br>
+		<textarea id="input" cols=50 rows=15 oninput="javascript:detect()"></textarea>
+		<hr/>
+		Try: <b>Metallgestell</b> and <b>Spruch</b>, also in <b>combination</b>... as well as <b>Katzen</b> for a less clear term
+	<body>
+</html>
